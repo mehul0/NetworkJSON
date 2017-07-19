@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NetworkJSON</string>
+    <string name="volley">Volley</string>
+    <string name="retrofit">Retrofit</string>
+</resources>
