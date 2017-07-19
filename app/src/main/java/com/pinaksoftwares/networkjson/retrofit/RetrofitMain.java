@@ -31,7 +31,7 @@ public class RetrofitMain extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_retrofit_main);
+        setContentView(R.layout.retro_activity_retrofit_main);
 
         if (API_KEY.isEmpty()){
             Toast.makeText(this, "API KEY Not Found", Toast.LENGTH_SHORT).show();
@@ -51,7 +51,7 @@ public class RetrofitMain extends AppCompatActivity {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
                 List<Movie> movies = response.body().getResults();
-                recyclerView.setAdapter(new MovieAdapter(movies, R.layout.list_item_movie, getApplicationContext()));
+                recyclerView.setAdapter(new MovieAdapter(movies, R.layout.retro_list_item_movie, getApplicationContext()));
                 Log.d(TAG, "NO of Movie received : " + movies.size());
             }
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.pinaksoftwares.networkjson.retrofit.RetrofitMain;
+import com.pinaksoftwares.networkjson.volley.VolleyMain;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void volley(View view) {
+        Intent intent = new Intent(this,VolleyMain.class);
+        startActivity(intent);
 
     }
 
