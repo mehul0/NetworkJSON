@@ -1,5 +1,6 @@
 package com.pinaksoftwares.networkjson.retrofit.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,6 +20,34 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     private int rowLayout;
     private Context context;
 
+
+    public MovieAdapter(List<Movie> movies, int rowLayout, Context context) {
+        this.movies = movies;
+        this.rowLayout = rowLayout;
+        this.context = context;
+    }
+
+    @Override
+    public MovieAdapter.MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout,parent,false);
+        return new MovieViewHolder(view);
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onBindViewHolder(MovieViewHolder holder, int position) {
+        holder.movieTitle.setText(movies.get(position).getTitle());
+        holder.data.setText(movies.get(position).getReleaseDate());
+        holder.movieDescription.setText(movies.get(position).getOverview());
+        holder.rating.setText(movies.get(position).getVoteAverage().toString());
+    }
+
+    @Override
+    public int getItemCount() {
+        return movies.size();
+    }
+
+
     public class MovieViewHolder extends RecyclerView.ViewHolder {
         LinearLayout movieLayout;
         TextView movieTitle;
@@ -36,28 +65,4 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         }
     }
 
-    public MovieAdapter(List<Movie> movies, int rowLayout, Context context) {
-        this.movies = movies;
-        this.rowLayout = rowLayout;
-        this.context = context;
-    }
-
-    @Override
-    public MovieAdapter.MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout,parent,false);
-        return new MovieViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(MovieViewHolder holder, int position) {
-        holder.movieTitle.setText(movies.get(position).getTitle());
-        holder.data.setText(movies.get(position).getReleaseDate());
-        holder.movieDescription.setText(movies.get(position).getOverview());
-        holder.rating.setText(movies.get(position).getVoteAverage().toString());
-    }
-
-    @Override
-    public int getItemCount() {
-        return movies.size();
-    }
 }

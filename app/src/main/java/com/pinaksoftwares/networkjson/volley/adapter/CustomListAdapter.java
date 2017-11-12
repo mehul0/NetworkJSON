@@ -1,6 +1,7 @@
 
 package com.pinaksoftwares.networkjson.volley.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -43,16 +44,19 @@ public class CustomListAdapter extends BaseAdapter {
         return position;
     }
 
+    @SuppressLint("ViewHolder")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        if (inflater == null)
+        //if (inflater == null)
             inflater = (LayoutInflater) activity
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        if (convertView == null)
+        //if (convertView == null)
+        if (inflater != null) {
             convertView = inflater.inflate(R.layout.volley_list_row, null);
+        }
 
-        if (imageLoader == null)
+        //if (imageLoader == null)
             imageLoader = AppController.getInstance().getImageLoader();
         NetworkImageView thumbNail = (NetworkImageView) convertView
                 .findViewById(R.id.thumbnail);

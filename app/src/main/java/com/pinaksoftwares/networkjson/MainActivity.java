@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     public void volley(View view) {
         Intent intent = new Intent(this,VolleyMain.class);
         startActivity(intent);
-
     }
 
     public void retrofit(View view) {
